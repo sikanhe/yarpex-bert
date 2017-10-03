@@ -1,0 +1,41 @@
+{
+  "name": "yarpex-bert",
+  "version": "1.0.0",
+  "main": "yarpex-bert.js",
+  "repository": "https://github.com/greenboxal/yarpex-bert",
+  "author": "Jonathan Lima <greenboxal@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "6.18.0",
+    "babel-core": "6.17.0",
+    "babel-jest": "18.0.0",
+    "babel-loader": "6.2.5",
+    "babel-plugin-add-module-exports": "0.2.1",
+    "babel-plugin-ramda": "1.2.0",
+    "babel-preset-es2015": "6.16.0",
+    "eslint": "3.7.1",
+    "eslint-config-airbnb-base": "8.0.0",
+    "eslint-loader": "1.5.0",
+    "eslint-plugin-import": "1.16.0",
+    "jest": "19.0.2",
+    "json-loader": "0.5.4",
+    "npm-run-all": "4.0.2",
+    "webpack": "1.13.2"
+  },
+  "scripts": {
+    "build": "run-p build:dev build:commonjs build:browser",
+    "build:commonjs": "webpack --optimize-minimize --optimize-dedupe --output-filename yarpex-bert.min.js",
+    "build:browser": "webpack --optimize-minimize --optimize-dedupe --config webpack.config.browser.js --output-filename yarpex-bert.min.js",
+    "build:dev": "run-s build:dev:node build:dev:browser",
+    "build:dev:node": "webpack",
+    "build:dev:browser": "webpack --config webpack.config.browser.js",
+    "start": "npm run build",
+    "test": "run-s test:unit",
+    "pretest": "npm run build:dev",
+    "test:unit": "jest --verbose --maxWorkers=1"
+  },
+  "dependencies": {
+    "ramda": "^0.24.1",
+    "yarpex": "^1.0.5"
+  }
+}
