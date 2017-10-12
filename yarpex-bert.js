@@ -1427,7 +1427,7 @@ module.exports =
 	    var type = _ref.type,
 	        value = _ref.value;
 	
-	    var tuple = [(0, _yarpex.atom)('bert')].append(type.encode({ type: type, value: value }));
+	    var tuple = [(0, _yarpex.atom)('bert')].concat(encoder({ type: type, value: value }));
 	
 	    return (0, _tuple.encode)({
 	      type: type,
@@ -2932,24 +2932,24 @@ module.exports =
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.encode = encode;
-	exports.decode = decode;
+	exports.encodeComplex = encodeComplex;
+	exports.decodeComplex = decodeComplex;
 	
 	var _type = __webpack_require__(34);
 	
-	function encode(type, value) {
+	function encodeComplex(type, value) {
 	  return [];
 	}
 	
-	function decode(type, items) {
+	function decodeComplex(type, items) {
 	  return null;
 	}
 	
 	var regex = (0, _type.complexType)({
 	  name: 'regex',
 	  tag: ['regex'],
-	  encode: encode,
-	  decode: decode
+	  encodeComplex: encodeComplex,
+	  decodeComplex: decodeComplex
 	});
 	
 	exports.default = regex;
@@ -2963,14 +2963,14 @@ module.exports =
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.encode = encode;
-	exports.decode = decode;
+	exports.encodeComplex = encodeComplex;
+	exports.decodeComplex = decodeComplex;
 	
 	var _yarpex = __webpack_require__(5);
 	
 	var _type = __webpack_require__(34);
 	
-	function encode(type, value) {
+	function encodeComplex(type, value) {
 	  var ms = value.getTime();
 	  var mega = Math.floor(ms / 1000000000);
 	  var s = Math.floor(ms % 10000000000 / 1000);
@@ -2979,7 +2979,7 @@ module.exports =
 	  return [(0, _yarpex.atom)('time'), integer(mega), integer(s), integer(mili)];
 	}
 	
-	function decode(type, items) {
+	function decodeComplex(type, items) {
 	  var mega = items[0].value;
 	  var s = items[1].value;
 	  var mili = items[2].value;
@@ -2991,8 +2991,8 @@ module.exports =
 	var time = (0, _type.complexType)({
 	  name: 'time',
 	  tags: ['time'],
-	  encode: encode,
-	  decode: decode
+	  encodeComplex: encodeComplex,
+	  decodeComplex: decodeComplex
 	});
 	
 	exports.default = time;
@@ -3006,14 +3006,14 @@ module.exports =
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.encode = encode;
+	exports.encodeComplex = encodeComplex;
 	exports.decodeComplex = decodeComplex;
 	
 	var _yarpex = __webpack_require__(5);
 	
 	var _type = __webpack_require__(34);
 	
-	function encode() {
+	function encodeComplex() {
 	  return [(0, _yarpex.atom)('nil')];
 	}
 	
@@ -3024,7 +3024,7 @@ module.exports =
 	var nil = (0, _type.complexType)({
 	  name: 'nil',
 	  tags: ['nil'],
-	  encode: encode,
+	  encodeComplex: encodeComplex,
 	  decodeComplex: decodeComplex
 	});
 	
