@@ -2937,11 +2937,17 @@ module.exports =
 	
 	var _type = __webpack_require__(34);
 	
-	function encodeComplex(type, value) {
+	function encodeComplex(_ref) {
+	  var type = _ref.type,
+	      value = _ref.value;
+	
 	  return [];
 	}
 	
-	function decodeComplex(type, items) {
+	function decodeComplex(_ref2) {
+	  var type = _ref2.type,
+	      items = _ref2.items;
+	
 	  return null;
 	}
 	
@@ -2970,7 +2976,10 @@ module.exports =
 	
 	var _type = __webpack_require__(34);
 	
-	function encodeComplex(type, value) {
+	function encodeComplex(_ref) {
+	  var type = _ref.type,
+	      value = _ref.value;
+	
 	  var ms = value.getTime();
 	  var mega = Math.floor(ms / 1000000000);
 	  var s = Math.floor(ms % 10000000000 / 1000);
@@ -2979,7 +2988,10 @@ module.exports =
 	  return [(0, _yarpex.atom)('time'), integer(mega), integer(s), integer(mili)];
 	}
 	
-	function decodeComplex(type, items) {
+	function decodeComplex(_ref2) {
+	  var type = _ref2.type,
+	      items = _ref2.items;
+	
 	  var mega = items[0].value;
 	  var s = items[1].value;
 	  var mili = items[2].value;
