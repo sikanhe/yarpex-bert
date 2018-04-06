@@ -2433,7 +2433,7 @@ module.exports =
 	  var code = 0;
 	  var offset = 0;
 	  var size = 0;
-	  var len = Math.ceiling(value / 256);
+	  var len = Math.ceil(value / 256);
 	  var negative = value < 0;
 	
 	  if (negative) {
@@ -2448,8 +2448,16 @@ module.exports =
 	    size = 4;
 	  }
 	
+	  buffer = Buffer.alloc(2 + size + len);
+	
 	  offset = buffer.writeUInt8(code, offset);
-	  offset = buffer.writeUIntBE(len, offset, size);
+	
+	  if (len < 256) {
+	    offset = buffer.writeUInt8(len, offset, size);
+	  } else {
+	    offset = buffer.writeUIntBE(len, offset, size);
+	  }
+	
 	  offset = buffer.writeUInt8(negative ? 1 : 0, offset);
 	
 	  while (value != 0) {
@@ -2981,11 +2989,13 @@ module.exports =
 	      value = _ref.value;
 	
 	  var ms = value.getTime();
+	  var micro = Math.floor(ms % 1000 * 1000);
+	  var second = Math.floor(ms % 1000000000 / 1000);
 	  var mega = Math.floor(ms / 1000000000);
-	  var s = Math.floor(ms % 10000000000 / 1000);
-	  var mili = Math.floor((ms - s * 1000) * 1000);
 	
-	  return [(0, _yarpex.atom)('time'), integer(mega), integer(s), integer(mili)];
+	  console.log(mega, second, micro);
+	
+	  return [(0, _yarpex.atom)('time'), (0, _yarpex.integer)(mega), (0, _yarpex.integer)(second), (0, _yarpex.integer)(micro)];
 	}
 	
 	function decodeComplex(_ref2) {
