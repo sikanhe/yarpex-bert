@@ -1,6 +1,6 @@
 {
   "name": "yarpex-bert",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "main": "yarpex-bert.js",
   "repository": "https://github.com/greenboxal/yarpex-bert",
   "author": "Jonathan Lima <greenboxal@gmail.com>",

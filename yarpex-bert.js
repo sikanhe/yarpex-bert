@@ -2353,7 +2353,7 @@ module.exports =
 	  }], [between(0, 256), function (λ) {
 	    return encodeInteger({ value: value, code: _constants2.default.SmallInteger, sizeLen: 1, signed: false });
 	  }], [between(-134217728, 134217727), function (λ) {
-	    return encodeInteger({ value: value, code: _constants2.default.Integer, sizeLen: 4, signed: false });
+	    return encodeInteger({ value: value, code: _constants2.default.Integer, sizeLen: 4, signed: true });
 	  }], [_T2.default, function (λ) {
 	    return encodeBigInteger({ type: type, value: value });
 	  }]])(value);
