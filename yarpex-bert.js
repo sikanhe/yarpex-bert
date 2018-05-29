@@ -50,6 +50,7 @@ module.exports =
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.decodeValue = exports.encodeValue = exports.decode = exports.encode = undefined;
 	
 	var _serialization = __webpack_require__(1);
 	
@@ -77,6 +78,13 @@ module.exports =
 	    return _serialization.decodeValue;
 	  }
 	});
+	
+	
+	var b = "g2gCdwJva2wAAAABdAAAAAV3E2N1c3RvbWVyX2FjY291bnRfaWRtAAAACWN1YWNjXzEyM3cQY3VzdG9tZXJfdXNlcl9pZGgCdwRiZXJ0dwNuaWx3Bm9yaWdpbm0AAAAGcmV0b29sdwZzb3VyY2V0AAAABHcTY3VzdG9tZXJfYWNjb3VudF9pZG0AAAAJY3VhY2NfMTIzdxBjdXN0b21lcl91c2VyX2lkaAJ3BGJlcnR3A25pbHcKcmVxdWVzdF9pZG0AAAAAdwpfX3N0cnVjdF9fdyVFbGl4aXIuQXNzZXRzQ2xpZW50LkZpbGVVcGxvYWRSZXF1ZXN0dwpfX3N0cnVjdF9fdyZFbGl4aXIuQXNzZXRzQ2xpZW50LkNyZWF0ZUFzc2V0UmVxdWVzdGo=";
+	console.log(b);
+	var decoded = (0, _serialization.decode)(b, 'base64');
+	
+	console.log(decoded);
 
 /***/ },
 /* 1 */
@@ -134,7 +142,7 @@ module.exports =
 	      value = _decodeValue.value,
 	      offset = _decodeValue.offset;
 	
-	  if (offset != data.length) {
+	  if (offset != buffer.length) {
 	    throw new Error('malformed bert value');
 	  }
 	
@@ -2029,7 +2037,7 @@ module.exports =
 	  var create = _ref2.create,
 	      type = _ref2.type,
 	      buffer = _ref2.buffer,
-	      startOffset = _ref2.startOffset,
+	      startOffset = _ref2.offset,
 	      sizeLen = _ref2.sizeLen,
 	      hasTail = _ref2.hasTail;
 	
@@ -2051,6 +2059,7 @@ module.exports =
 	
 	  if (hasTail) {
 	    var _decodeValue2 = (0, _serialization.decodeValue)({ buffer: buffer, offset: offset }),
+	        lol = _decodeValue2.value,
 	        nextOffset = _decodeValue2.offset;
 	
 	    offset = nextOffset;
@@ -2992,8 +3001,6 @@ module.exports =
 	  var micro = Math.floor(ms % 1000 * 1000);
 	  var second = Math.floor(ms % 1000000000 / 1000);
 	  var mega = Math.floor(ms / 1000000000);
-	
-	  console.log(mega, second, micro);
 	
 	  return [(0, _yarpex.atom)('time'), (0, _yarpex.integer)(mega), (0, _yarpex.integer)(second), (0, _yarpex.integer)(micro)];
 	}
