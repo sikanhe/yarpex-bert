@@ -50,7 +50,6 @@ module.exports =
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.decodeValue = exports.encodeValue = exports.decode = exports.encode = undefined;
 	
 	var _serialization = __webpack_require__(1);
 	
@@ -78,13 +77,6 @@ module.exports =
 	    return _serialization.decodeValue;
 	  }
 	});
-	
-	
-	var b = "g2gCdwJva2wAAAABdAAAAAV3E2N1c3RvbWVyX2FjY291bnRfaWRtAAAACWN1YWNjXzEyM3cQY3VzdG9tZXJfdXNlcl9pZGgCdwRiZXJ0dwNuaWx3Bm9yaWdpbm0AAAAGcmV0b29sdwZzb3VyY2V0AAAABHcTY3VzdG9tZXJfYWNjb3VudF9pZG0AAAAJY3VhY2NfMTIzdxBjdXN0b21lcl91c2VyX2lkaAJ3BGJlcnR3A25pbHcKcmVxdWVzdF9pZG0AAAAAdwpfX3N0cnVjdF9fdyVFbGl4aXIuQXNzZXRzQ2xpZW50LkZpbGVVcGxvYWRSZXF1ZXN0dwpfX3N0cnVjdF9fdyZFbGl4aXIuQXNzZXRzQ2xpZW50LkNyZWF0ZUFzc2V0UmVxdWVzdGo=";
-	console.log(b);
-	var decoded = (0, _serialization.decode)(b, 'base64');
-	
-	console.log(decoded);
 
 /***/ },
 /* 1 */
@@ -1456,7 +1448,7 @@ module.exports =
 	    throw new Error('unsupported type ' + tag);
 	  }
 	
-	  return type.decodeComplex({ type: type, tag: tag, value: complex.slice(2) });
+	  return type.decodeComplex({ type: type, tag: tag, items: complex.slice(2) });
 	}
 
 /***/ },
@@ -3012,9 +3004,9 @@ module.exports =
 	  var mega = items[0].value;
 	  var s = items[1].value;
 	  var mili = items[2].value;
-	  var ms = mega * 10000000000 + s * 1000 + mili / 1000;
+	  var ms = mega * 1000000000 + s * 1000 + mili / 1000;
 	
-	  return time(new Date(ms));
+	  return (0, _yarpex.time)(new Date(ms));
 	}
 	
 	var time = (0, _type.complexType)({
