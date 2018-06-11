@@ -1,6 +1,6 @@
 {
   "name": "yarpex-bert",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "main": "yarpex-bert.js",
   "repository": "https://github.com/greenboxal/yarpex-bert",
   "author": "Jonathan Lima <greenboxal@gmail.com>",
@@ -36,6 +36,6 @@
   },
   "dependencies": {
     "ramda": "^0.24.1",
-    "yarpex": "^1.0.5"
+    "yarpex": "^1.0.6"
   }
 }
