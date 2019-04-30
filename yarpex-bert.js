@@ -2869,7 +2869,10 @@ module.exports =
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function encode(type, value) {
+	function encode(_ref) {
+	  var type = _ref.type,
+	      value = _ref.value;
+	
 	  var offset = 0;
 	  var buffer = Buffer.alloc(9);
 	
@@ -2879,7 +2882,11 @@ module.exports =
 	  return buffer;
 	}
 	
-	function decode(type, buffer, offset) {
+	function decode(_ref2) {
+	  var type = _ref2.type,
+	      buffer = _ref2.buffer,
+	      offset = _ref2.offset;
+	
 	  return {
 	    value: (0, _yarpex.float)(buffer.readDoubleBE(offset)),
 	    offset: offset + 8
