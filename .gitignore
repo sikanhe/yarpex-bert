@@ -1,6 +1,7 @@
+.DS_Store
+
 ### Project ###
 docs
-browser
 pagarme.min.js
 pagarme.min.js.map
 pagarme.js
