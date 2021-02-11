@@ -1,18 +1,22 @@
 const path = require('path')
-const R = require('ramda')
-
-const base = require('./webpack.config.js')
+const webpack = require('webpack')
 
 const config = {
+  entry: './lib/index.js',
   target: 'web',
+  mode: 'production',
   output: {
     path: path.join(__dirname, './browser'),
-    library: 'yarpex-bert',
+    library: 'yarpexBert',
     libraryTarget: 'umd',
     umdNamedDefine: true,
     filename: 'yarpex-bert.js',
-    sourceMapFilename: 'yarpex-bert.js.map',
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      Buffer: ['buffer', 'Buffer'],
+    }),
+  ],
 }
 
-module.exports = R.merge(base, config)
+module.exports = config

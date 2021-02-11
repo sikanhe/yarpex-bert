@@ -20,12 +20,13 @@
     "jest": "19.0.2",
     "json-loader": "0.5.4",
     "npm-run-all": "4.0.2",
-    "webpack": "1.13.2"
+    "webpack": "5.21.2",
+    "webpack-cli": "4.5.0"
   },
   "scripts": {
-    "build": "run-p build:dev build:commonjs build:browser",
+    "build": "run-p build:browser",
     "build:commonjs": "webpack --optimize-minimize --optimize-dedupe --output-filename yarpex-bert.min.js",
-    "build:browser": "webpack --optimize-minimize --optimize-dedupe --config webpack.config.browser.js --output-filename yarpex-bert.min.js",
+    "build:browser": "webpack --config webpack.config.browser.js --output-filename yarpex-bert.min.js",
     "build:dev": "run-s build:dev:node build:dev:browser",
     "build:dev:node": "webpack",
     "build:dev:browser": "webpack --config webpack.config.browser.js",
@@ -35,6 +36,7 @@
     "test:unit": "jest --verbose --maxWorkers=1"
   },
   "dependencies": {
+    "buffer": "6.0.3",
     "ramda": "^0.24.1",
     "yarpex": "^1.0.6"
   }
